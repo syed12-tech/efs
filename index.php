@@ -133,6 +133,7 @@
                       <div class="form-group">
                         <label for="name">Employee Name</label>
                         <input type="text" class="form-control" id="name" name="ename" placeholder="Enter your employee name" required="">
+                         <div id="name_error" class="error hidden">Please enter Employee Name</div>
                       </div>
 
                     </div>
@@ -146,7 +147,8 @@
 
                       <div class="form-group">
                         <label for="ccnumber">Designation</label>
-                        <input type="text" class="form-control" id="ccnumber" name="designation" placeholder="Enter designation" required="">
+                        <input type="text" class="form-control" id="desig" name="designation" placeholder="Enter designation" required="">
+                        <div id="desig_error" class="error hidden">Please enter Disignation </div>
                       </div>
 
                     </div>
@@ -158,7 +160,7 @@
 
                     <div class="form-group col-sm-6">
                       <label for="ccmonth">Role</label>
-                      <select class="form-control" id="ccmonth" name="role" required="">
+                      <select class="form-control" id="role" name="role" required="">
                         <option selected="" disabled="" value="">Select Role</option>
                         <?php
                         include 'connect.php';
@@ -173,18 +175,19 @@
                        ?>
                        
                       </select>
+                       <div id="role_error" class="error hidden">Please enter Role </div>
                     </div>
 
                     <div class="form-group col-sm-6">
                       <label for="ccyear">Phone Number</label>
                       <input type="text" class="form-control" id="myform_phone" name="phone" placeholder="Enter Phone Number" maxlength="10" onkeyup ="validateForm();" required="">
                        <div id="phone_error" class="error hidden">Please enter a valid phone number</div>
-
+                        <div id="phone_error_" class="error hidden">Please enter a  phone number</div>
                     </div>
                      
    
 <div class="form-group w3-padding">
-                  <input type="submit" name="submit" class=" form-control w3-btn w3-small w3-green w3-round" value="register" disabled="true" id="btn">  
+                  <input type="submit" name="submit" class=" form-control w3-btn w3-small w3-green w3-round" value="register"  id="btn" onclick="validatedata()">  
 </div>
                   </div>
                   <!--/.row-->
@@ -262,10 +265,53 @@
   <script type="text/javascript">
    
 
-function validatePhoneNumber(input_str) {
+function validatePhoneNumber(input_str)
+ {
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
     return re.test(input_str);
+}
+function validatedata()
+{
+  var name=document.getElementById('name').value;
+  var desig=document.getElementById('desig').value;
+   var role=document.getElementById('role').value;
+    var phone=document.getElementById('myform_phone').value;
+  if(name=="")
+  {
+     document.getElementById('name_error').classList.remove('hidden');
+  }
+  else 
+  {
+        document.getElementById('name_error').classList.add('hidden');
+     } 
+  if(desig=="")
+    {
+     document.getElementById('desig_error').classList.remove('hidden');
+  }
+  
+  else 
+  {
+        document.getElementById('desig_error').classList.add('hidden');
+     }
+     if(role=="")
+    {
+     document.getElementById('role_error').classList.remove('hidden');
+  }
+  
+  else 
+  {
+        document.getElementById('role_error').classList.add('hidden');
+     } 
+     if(phone=="")
+    {
+     document.getElementById('phone_error_').classList.remove('hidden');
+  }
+  
+  else 
+  {
+        document.getElementById('phone_error_').classList.add('hidden');
+     }   
 }
 
 function validateForm(event) {

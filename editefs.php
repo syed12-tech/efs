@@ -141,9 +141,11 @@
                     <div class="col-sm-12">
 
                       <div class="form-group">
-                        <label for="name">Emplpyee Name</label>
-                         <input type="hidden" class="form-control" id="name" name="slno" value="<?php  echo $r['id']?>" placeholder="Enter your employee name" required="">
+                        <label for="name">Employee Name</label>
+                         <input type="hidden" class="form-control"  name="slno" value="<?php  echo $r['id']?>" placeholder="Enter your employee name" required="">
+
                         <input type="text" class="form-control" id="name" name="ename" value="<?php  echo $r['employeename']?>" placeholder="Enter your employee name" required="">
+                       
                       </div>
 
                     </div>
@@ -196,6 +198,8 @@
    
 <div class="form-group w3-padding">
                   <input type="submit" name="submit" class=" form-control w3-btn w3-small w3-green w3-round" value="Update Data"  id="btn">  
+                  <a  href="index.php" class="w3-btn w3-card w3-blue w3-small">Cancel </a> 
+</div>
 </div>
                   </div>
                   <!--/.row-->
@@ -225,7 +229,8 @@
   <script type="text/javascript">
    
 
-function validatePhoneNumber(input_str) {
+function validatePhoneNumber(input_str)
+ {
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
     return re.test(input_str);
